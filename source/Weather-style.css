@@ -40,22 +40,21 @@
   border-radius: 5px;
   left: 3%;
 }
-.form-check-label2 {
-  position: relative;
-  font-size: 20px;
-  right: 15%;
-}
 .form-check-label {
   position: relative;
-  right: 6%;
+  font-size: 20px;
+  right: 140%;
+}
+.form-check-label2 {
+  position: relative;
+  right: 50%;
   font-size: 20px;
 }
 .switch {
   position: relative;
-  left: 80%;
   font-family: monospace;
-  margin-top: -8%;
-  margin-bottom: 5%;
+  left: 12%;
+  margin-top: 2.5%;
   font-size: 18px;
   color: #0dcaf0;
 }
