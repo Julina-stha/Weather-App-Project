@@ -6,23 +6,23 @@
   display: block;
   margin: 0 auto;
   margin-top: 15px;
-  max-width: 600px;
+  max-width: 500px;
   font-family: monospace;
   background-color: #9fe9f817;
 }
 
 .card-body {
-  padding: 12px 12px 0px 12px;
+  padding: 12px 12px 20px 12px;
 }
 
 #search-bar {
   display: block;
   border-radius: 5px;
   margin-top: 10px;
-  margin-left: 80px;
+  margin-left: 25px;
   font-size: 15px;
   max-height: 30%;
-  max-width: 35%;
+  max-width: 45%;
 }
 .btn {
   display: block;
@@ -69,7 +69,7 @@
 }
 
 .col-6 {
-  width: 45%;
+  width: 57%;
   margin-left: 20px;
 }
 
@@ -82,11 +82,6 @@
   padding: 12px 15px 10px 15px;
 }
 
-ul {
-  list-style: none;
-  margin: 0%;
-  padding: 0%;
-}
 .card-2 {
   border-radius: 10px;
   margin-left: -2%;
@@ -95,10 +90,9 @@ ul {
 .card-2:hover {
   background-color: #f9fbfc54;
 }
-#units {
-  position: relative;
-  top: -20px;
-  font-size: 5px;
+.card-title {
+  font-size: 35px;
+  margin: 0%;
 }
 .card-text {
   font-size: 15px;
@@ -108,9 +102,6 @@ ul {
   color: #fd9546fb;
 }
 
-.card-title {
-  font-size: 35px;
-}
 .today {
   color: #c06e30fb;
   font-size: 20px;
@@ -147,28 +138,24 @@ ul {
 }
 
 .col-7 {
-  width: 50%;
-  position: relative;
-  margin-top: 8%;
-  right: 5%;
+  display: block;
+  margin: 0 auto;
+  margin-right: 50%;
 }
 
 .list-group {
   flex-direction: row;
-  text-align: center;
   position: relative;
-  left: 120%;
-  margin-top: -100%;
 }
 
 .list-group-item {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
   background-color: #ffc4113d;
   color: #13b1d1;
   border-color: transparent;
   line-height: 1.4;
-  padding: 3px 10px;
+  padding: 10px 20px 10px 20px;
 }
 
 .list-group-item:hover {
@@ -180,15 +167,15 @@ ul {
 }
 
 .second-section-degree {
-  font-size: 13px;
+  font-size: 15px;
   font-family: monospace;
   color: #c06e30fb;
 }
 
 .third-section {
   position: relative;
-  left: 50%;
-  margin-top: -29%;
+  left: 60%;
+  margin-top: -78%;
 }
 .third-section-degree {
   font-size: 13px;
@@ -198,15 +185,12 @@ ul {
 }
 
 .list-group-2 {
-  display: flex;
-  flex-direction: row;
   text-align: center;
 }
 
 .list-group-item-2 {
-  padding: 3px 15px;
+  padding: 4px 10px;
   font-size: 14px;
-  font-weight: bold;
   background-color: #ffc4113d;
   color: #13b1d1;
   border-color: transparent;
