@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeatherApp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/b0cbe4dcc7.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="source/style.css" />
+</head>
+
+<body>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <div class="first-section">
+            <div class="card-2">
+              <div class="card-body" id="first-card-body">
+                <h1 class="card-title" id="city-name">
+                </h1>
+                <span class="card-title" id="temperature">
+                  <span class="card-title" id="units">°C</span>
+                </span>
+                <p class="card-text" id="time">
+                  14:25
+                </p>
+                <p class="card-text" id="date">
+                  14/02/2021
+                </p>
+                <div class="card-text" id="weather-description">
+                </div>
+                <p class="today" id="day">
+                  Saturday
+                </p>
+                <div class="first-icon">
+                  <img src="https://img.icons8.com/doodle/96/000000/partly-cloudy-night.png" width="110" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="card-body">
+          <div class="list-group">
+            <div class="list-group-item list-group-item-action">
+              Sun
+              <span class="second-section-icon">
+                <img src="https://img.icons8.com/doodle/96/000000/partly-cloudy-day.png" width="42" />
+                <span class="second-section-degree">
+                  14°
+                </span>
+              </span>
+            </div>
+            <div class="list-group-item list-group-item-action">
+              Mon
+              <span class="second-section-icon">
+                <img src="https://img.icons8.com/doodle/192/000000/sun--v1.png" width="42" />
+                <span class="second-section-degree">
+                  14°
+                </span>
+              </span>
+            </div>
+            <div class="list-group-item list-group-item-action">
+              Tue
+              <span class="second-section-icon">
+                <img src="https://img.icons8.com/doodle/96/000000/snow--v1.png" width="42" />
+                <span class="second-section-degree">
+                  14°
+                </span>
+              </span>
+            </div>
+            <div class="list-group-item list-group-item-action">
+              Wed
+              <span class="second-section-icon">
+                <img src="https://img.icons8.com/doodle/96/000000/rain--v1.png" width="42" />
+                <span class="second-section-degree">
+                  14°
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="third-section">
+        <div class="list-group-2" style="width: 11rem;">
+          <div class="list-group-item-2 list-group-item-action">
+            15:00
+            <span class="second-section-icon">
+              <img src="https://img.icons8.com/doodle/96/000000/bright-moon.png" width="42" />
+              <span class="third-section-degree">
+                14°
+              </span>
+            </span>
+          </div>
+          <div class="list-group-item-2 list-group-item-action">
+            16:00
+            <span class="second-section-icon">
+              <img src="https://img.icons8.com/doodle/96/000000/bright-moon.png" width="42" />
+              <span class="third-section-degree">
+                16°
+              </span>
+            </span>
+          </div>
+          <div class="list-group-item-2 list-group-item-action">
+            17:00
+            <span class="second-section-icon">
+              <img src="https://img.icons8.com/doodle/96/000000/partly-cloudy-night.png" width="42" />
+              <span class="third-section-degree">
+                13°
+              </span>
+            </span>
+          </div>
+          <div class="list-group-item-2 list-group-item-action">
+            18:00
+            <span class="second-section-icon">
+              <img src="https://img.icons8.com/doodle/96/000000/bright-moon.png" width="42" />
+              <span class="third-section-degree">
+                12°
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="source/app.js"></script>
+</body>
+
+</html>
