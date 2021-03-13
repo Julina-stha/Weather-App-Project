@@ -1,5 +1,6 @@
-.card {
+.container {
   border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 16%), 0 0 0 1px rgb(0 0 0 / 8%);
   border: double;
   border-color: #05b2d4;
   display: block;
@@ -8,11 +9,9 @@
   max-width: 600px;
   font-family: monospace;
   background-color: #9fe9f817;
-  padding: 0px 0px 45px 0px;
 }
 
 .card-body {
-  margin-bottom: 28px;
   padding: 12px 12px 0px 12px;
 }
 
@@ -221,4 +220,9 @@ ul {
   -ms-transform: scale(1.3);
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
+}
+
+.small-text {
+  display: block;
+  margin: 0 auto;
 }
