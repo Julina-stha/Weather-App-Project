@@ -15,20 +15,7 @@
   margin-bottom: 28px;
   padding: 12px 12px 0px 12px;
 }
-img {
-  display: block;
-  margin: 0 auto;
-  max-height: 320px;
-  max-width: 450px;
-}
-.carousel-control-prev-icon {
-  background-color: #0fbbdd;
-  margin-right: 40%;
-}
-.carousel-control-next-icon {
-  background-color: #0fbbdd;
-  margin-left: 40%;
-}
+
 #search-bar {
   display: block;
   border-radius: 5px;
