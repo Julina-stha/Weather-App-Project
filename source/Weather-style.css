@@ -44,18 +44,19 @@
 .form-check-label2 {
   position: relative;
   font-size: 20px;
-  right: 145%;
+  right: 15%;
 }
 .form-check-label {
   position: relative;
-  left: -70%;
+  right: 6%;
   font-size: 20px;
 }
 .switch {
   position: relative;
-  left: 12%;
+  left: 80%;
   font-family: monospace;
-  margin-top: 2.5%;
+  margin-top: -8%;
+  margin-bottom: 5%;
   font-size: 18px;
   color: #0dcaf0;
 }
