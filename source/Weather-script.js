@@ -72,7 +72,7 @@ function showFarenheit(event) {
   if (event.target.checked) {
     switchF.innerHTML = `${Math.round((switchF * 9) / 5 + 32)}°F`;
   } else {
-    switchF.innerHTML = switchF;
+    switchF.innerHTML = `${Math.round(outcome.data.main.temp)}`;
   }
 }
 let switchButton = document.querySelector("#flexSwitchCheckDefault");
