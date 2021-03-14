@@ -141,7 +141,7 @@ body {
   margin-bottom: 0%;
 }
 
-.col-7 {
+.second-section {
   display: block;
   margin: 0 auto;
   margin-right: 50%;
@@ -177,19 +177,12 @@ body {
 }
 
 .third-section {
-  position: relative;
-  left: 60%;
-  margin-top: -74%;
+  width: 0%;
 }
+
 .third-section-degree {
   font-size: 13px;
   font-family: monospace;
-  color: #c06e30fb;
-  text-align: center;
-}
-
-.list-group-2 {
-  text-align: center;
 }
 
 .list-group-item-2 {
