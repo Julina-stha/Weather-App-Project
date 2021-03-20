@@ -29,9 +29,10 @@ displayTime.innerHTML = `${currentHour}:${currentMin}`;
 function displayWeatherInfo(outcome) {
   console.log(outcome);
   document.querySelector("#city-name").innerHTML = outcome.data.name;
-  document.querySelector("#temperature").innerHTML = `${Math.round(outcome.data.main.temp)}`;
+  celsiusTemp = outcome.data.main.temp;
+  document.querySelector("#temperature").innerHTML = `${Math.round(celsiusTemp)}`;
   document.querySelector("#weather-description").innerHTML = outcome.data.weather[0].description;
-
+  
 }
 
 function searchCity(results) {
@@ -68,15 +69,25 @@ let locateButton = document.querySelector("#locate");
 locateButton.addEventListener("click", defaultAction);
 
 function showFarenheit(event) {
-  let switchF = document.querySelector("#temperature").value;
+  let switchF = document.querySelector("#temperature");
+  let farenheitFormula = (celsiusTemp * 9) / 5 + 32;
   if (event.target.checked) {
-    switchF.innerHTML = `${Math.round((switchF * 9) / 5 + 32)}°F`;
+    switchF.innerHTML = `${Math.round(farenheitFormula)}°F`;
   } else {
-    switchF.innerHTML = `${Math.round(outcome.data.main.temp)}`;
+    switchF.innerHTML = `${Math.round(celsiusTemp)}°C`;
   }
 }
+
+function hideCelsius() {
+  let celsius = document.querySelector("#unit");
+  celsius.innerHTML = "";
+}
+
+let celsiusTemp = null;
+
 let switchButton = document.querySelector("#flexSwitchCheckDefault");
 switchButton.addEventListener("click", showFarenheit);
+switchButton.addEventListener("click", hideCelsius);
 
 
 
