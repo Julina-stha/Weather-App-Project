@@ -78,6 +78,16 @@ function showFarenheit(event) {
   }
 }
 
+function showFarenheitAll(event) {
+  let switchFall = document.querySelector("#temperature");
+  let farenheitFormula = (celsiusTemp * 9) / 5 + 32;
+  if (event.target.checked) {
+    switchF.innerHTML = `${Math.round(farenheitFormula)}°F`;
+  } else {
+    switchF.innerHTML = `${Math.round(celsiusTemp)}°C`;
+  }
+}
+
 function hideCelsius() {
   let celsius = document.querySelector("#unit");
   celsius.innerHTML = "";
