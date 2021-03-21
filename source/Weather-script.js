@@ -39,6 +39,51 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
+function formatday(timestamp) {
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+  let weekDays = days[current.getDay()];
+  
+  return `${weekDays}`;
+}
+
+function formatIcon(icon) {
+  let iconElement = null;
+  if (icon === "01d") {
+    iconElement = "source/images/Icons/01d.png";
+  } else if (icon === "02d") {
+    iconElement = "source/images/Icons/02d.png";
+  } else if (icon === "03d") {
+    iconElement = "source/images/Icons/03d.png";
+  } else if (icon === "04d") {
+    iconElement = "source/images/Icons/04d.png";
+  } else if (icon === "09d") {
+    iconElement = "source/images/Icons/09d.png";
+  } else if (icon === "10d") {
+    iconElement = "source/images/Icons/10d.png";
+  } else if (icon === "11d") {
+    iconElement = "source/images/Icons/11d.png";
+  } else if (icon === "13d") {
+    iconElement = "source/images/Icons/13d.png";
+  } else if (icon === "01n") {
+    iconElement = "source/images/Icons/01n.png";
+  } else if (icon === "02n") {
+    iconElement = "source/images/Icons/02n.png";
+  } else if (icon === "03n") {
+    iconElement = "source/images/Icons/03nd.png";
+  } else if (icon === "04n") {
+    iconElement = "source/images/Icons/04n.png";
+  } else if (icon === "09n") {
+    iconElement = "source/images/Icons/09n.png";
+  } else if (icon === "10n") {
+    iconElement = "source/images/Icons/10n.png";
+  } else if (icon === "11n") {
+    iconElement = "source/images/Icons/11n.png";
+  } else if (icon === "13n") {
+    iconElement = "source/images/Icons/13n.png";
+    return iconElement;
+}
+
+  document.querySelector("#current-weather-icon").setAttribute("src", formatIcon(outcome.data.weather[0].icon));
 
 function displayWeatherInfo(outcome) {
   document.querySelector("#city-name").innerHTML = outcome.data.name;
@@ -50,6 +95,7 @@ function displayWeatherInfo(outcome) {
 
 function displayHourlyForecast(response) {
   let hourlyForecastElement = document.querySelector("#hourly-forecast");
+  console.log(response.data);
   hourlyForecastElement.innerHTML = null;
   let hourlyForecast = null;
   
@@ -59,7 +105,7 @@ function displayHourlyForecast(response) {
     <div class="list-group-item-2 list-group-item-action">
       ${formatHours(hourlyForecast.dt * 1000)}
       <span class="second-section-icon">
-      <img src="https://img.icons8.com/doodle/96/000000/bright-moon.png" width="42" />
+      <img src="" width="42"/>
         <span class="third-section-degree">
           ${Math.round(hourlyForecast.main.temp)}°
         </span>
@@ -68,11 +114,30 @@ function displayHourlyForecast(response) {
   }
 }
 
-function formatIcon(icon) {
-  let iconElement = null;
-  if (icon === "")
-}
 
+function displaydailyForecast(response) {
+  let dailyForecastElement = document.querySelector("#daily-forecast");
+  console.log(response.data);
+  dailyForecastElement.innerHTML = null;
+  let dailyForecast = null;
+  
+  for (let index = 1; index < 4; index++) {
+    let dailyForecast = response.data.list[index];
+    
+    dailyForecastElement.innerHTML += `
+    <div class="list-group-item list-group-item-action">
+      ${formatday (dailyForecast.dt * 1000)}
+      <span class="second-section-icon">
+      <img src="${formatIcon(dailyForecast.weather[0].icon)}" width="60" />
+        <span class="second-section-degree">
+          ${Math.round(dailyForecast.main.temp)}°
+        </span>
+      </span>
+    </div>`
+  }
+}
+  
+  
 function searchCity(results) {
   let apiKey = "ba753d969dccd2973e89444d00d45191";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${results}&appid=${apiKey}&units=metric`;
@@ -100,7 +165,8 @@ function showLocation(position) {
   let latitude = position.coords.latitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
-}
+  }
+  
 function defaultAction(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showLocation);
