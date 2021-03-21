@@ -11,9 +11,11 @@
   <script src="https://kit.fontawesome.com/b0cbe4dcc7.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="source/Weather-style.css" />
+
 </head>
 
 <body>
+  <img src="source/images/Spring.png" id="weather-background">
   <div class="container">
     <div class="card">
       <div class="card-body">
@@ -37,8 +39,7 @@
                   <div class="card-title" id="city-name">
                   </div>
                   <span class="card-title">
-                    <span id="temperature"></span>
-                    <span class= "card-title">°C</span>
+                    <span id="temperature"></span><span class= "card-title" id="unit">°C</span>
                   </span>
                   <p class="card-text" id="time">
                     14:25
