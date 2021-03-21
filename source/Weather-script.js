@@ -1,3 +1,5 @@
+///Setting the Time and Date///
+
 let current = new Date();
 let currentDate = current.getDate();
 if (currentDate < 10) {
@@ -24,10 +26,21 @@ let displayTime = document.querySelector("#time");
 displayTime.innerHTML = `${currentHour}:${currentMin}`;
 
 
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
 
 
 function displayWeatherInfo(outcome) {
-  console.log(outcome);
   document.querySelector("#city-name").innerHTML = outcome.data.name;
   celsiusTemp = outcome.data.main.temp;
   document.querySelector("#temperature").innerHTML = `${Math.round(celsiusTemp)}`;
@@ -35,10 +48,38 @@ function displayWeatherInfo(outcome) {
   
 }
 
+function displayHourlyForecast(response) {
+  let hourlyForecastElement = document.querySelector("#hourly-forecast");
+  hourlyForecastElement.innerHTML = null;
+  let hourlyForecast = null;
+  
+  for (let index = 0; index < 4; index++) {
+    let hourlyForecast = response.data.list[index];
+    hourlyForecastElement.innerHTML += `
+    <div class="list-group-item-2 list-group-item-action">
+      ${formatHours(hourlyForecast.dt * 1000)}
+      <span class="second-section-icon">
+      <img src="https://img.icons8.com/doodle/96/000000/bright-moon.png" width="42" />
+        <span class="third-section-degree">
+          ${Math.round(hourlyForecast.main.temp)}°
+        </span>
+      </span>
+    </div>`
+  }
+}
+
+function formatIcon(icon) {
+  let iconElement = null;
+  if (icon === "")
+}
+
 function searchCity(results) {
   let apiKey = "ba753d969dccd2973e89444d00d45191";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${results}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${results}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayHourlyForecast);
 }
 searchCity("Kathmandu");
 
@@ -79,7 +120,7 @@ function showFarenheit(event) {
 }
 
 function showFarenheitAll(event) {
-  let switchFall = document.querySelector("#temperature");
+  let switchF = document.querySelector("#temperature");
   let farenheitFormula = (celsiusTemp * 9) / 5 + 32;
   if (event.target.checked) {
     switchF.innerHTML = `${Math.round(farenheitFormula)}°F`;
