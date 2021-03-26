@@ -69,7 +69,7 @@ function formatIcon(icon) {
   } else if (icon === "02n") {
     iconElement = "source/images/Icons/02n.png";
   } else if (icon === "03n") {
-    iconElement = "source/images/Icons/03nd.png";
+    iconElement = "source/images/Icons/03n.png";
   } else if (icon === "04n") {
     iconElement = "source/images/Icons/04n.png";
   } else if (icon === "09n") {
@@ -80,17 +80,17 @@ function formatIcon(icon) {
     iconElement = "source/images/Icons/11n.png";
   } else if (icon === "13n") {
     iconElement = "source/images/Icons/13n.png";
-    return iconElement;
+  }
+  return iconElement;
 }
 
-  document.querySelector("#current-weather-icon").setAttribute("src", formatIcon(outcome.data.weather[0].icon));
 
 function displayWeatherInfo(outcome) {
   document.querySelector("#city-name").innerHTML = outcome.data.name;
   celsiusTemp = outcome.data.main.temp;
   document.querySelector("#temperature").innerHTML = `${Math.round(celsiusTemp)}`;
   document.querySelector("#weather-description").innerHTML = outcome.data.weather[0].description;
-  
+  document.querySelector("#current-weather-icon").setAttribute("src", formatIcon(outcome.data.weather[0].icon));
 }
 
 function displayHourlyForecast(response) {
@@ -105,7 +105,7 @@ function displayHourlyForecast(response) {
     <div class="list-group-item-2 list-group-item-action">
       ${formatHours(hourlyForecast.dt * 1000)}
       <span class="second-section-icon">
-      <img src="" width="42"/>
+      <img src="${formatIcon(hourlyForecast.weather[0].icon)}" width="48"/>
         <span class="third-section-degree">
           ${Math.round(hourlyForecast.main.temp)}°
         </span>
@@ -113,6 +113,7 @@ function displayHourlyForecast(response) {
     </div>`
   }
 }
+
 
 
 function displaydailyForecast(response) {
@@ -174,6 +175,9 @@ function defaultAction(event) {
 
 let locateButton = document.querySelector("#locate");
 locateButton.addEventListener("click", defaultAction);
+let displayHourlyForecastOnLocate = document.querySelector("#hourly-forecast")
+displayHourlyForecastOnLocate.addEventListener("click", displayHourlyForecast);
+
 
 function showFarenheit(event) {
   let switchF = document.querySelector("#temperature");
@@ -185,15 +189,6 @@ function showFarenheit(event) {
   }
 }
 
-function showFarenheitAll(event) {
-  let switchF = document.querySelector("#temperature");
-  let farenheitFormula = (celsiusTemp * 9) / 5 + 32;
-  if (event.target.checked) {
-    switchF.innerHTML = `${Math.round(farenheitFormula)}°F`;
-  } else {
-    switchF.innerHTML = `${Math.round(celsiusTemp)}°C`;
-  }
-}
 
 function hideCelsius() {
   let celsius = document.querySelector("#unit");
@@ -205,7 +200,3 @@ let celsiusTemp = null;
 let switchButton = document.querySelector("#flexSwitchCheckDefault");
 switchButton.addEventListener("click", showFarenheit);
 switchButton.addEventListener("click", hideCelsius);
-
-
-
-    
