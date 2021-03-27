@@ -39,12 +39,16 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-function formatday(timestamp) {
+
+function formatWeekday(timestamp) {
+  let date = new Date(timestamp);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
-  let weekDays = days[current.getDay()];
+  let dailyWeekDays = days[current.getDay()];
   
-  return `${weekDays}`;
+  return `${dailyWeekDays}`;
 }
+
+
 
 function formatIcon(icon) {
   let iconElement = null;
@@ -80,19 +84,27 @@ function formatIcon(icon) {
     iconElement = "source/images/Icons/11n.png";
   } else if (icon === "13n") {
     iconElement = "source/images/Icons/13n.png";
+  } else if (icon === "50n") {
+    iconElement = "source/images/Icons/50n.png";
+  } else if (icon === "50d") {
+    iconElement = "source/images/Icons/50d.png";
   }
   return iconElement;
 }
 
-
 function displayWeatherInfo(outcome) {
+  console.log(outcome);
   document.querySelector("#city-name").innerHTML = outcome.data.name;
   celsiusTemp = outcome.data.main.temp;
   document.querySelector("#temperature").innerHTML = `${Math.round(celsiusTemp)}`;
   document.querySelector("#weather-description").innerHTML = outcome.data.weather[0].description;
+  document.querySelector("#humidity").innerHTML = `Humidity: ${outcome.data.main.humidity}%`;
+  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(outcome.data.wind.speed)}km/h`;
   document.querySelector("#current-weather-icon").setAttribute("src", formatIcon(outcome.data.weather[0].icon));
+
 }
 
+//display hourly forecast start//
 function displayHourlyForecast(response) {
   let hourlyForecastElement = document.querySelector("#hourly-forecast");
   console.log(response.data);
@@ -101,9 +113,10 @@ function displayHourlyForecast(response) {
   
   for (let index = 0; index < 4; index++) {
     let hourlyForecast = response.data.list[index];
+    let localTimestamp = hourlyForecast.dt + response.data.city.timezone
     hourlyForecastElement.innerHTML += `
     <div class="list-group-item-2 list-group-item-action">
-      ${formatHours(hourlyForecast.dt * 1000)}
+      ${formatHours(localTimestamp * 1000)}
       <span class="second-section-icon">
       <img src="${formatIcon(hourlyForecast.weather[0].icon)}" width="48"/>
         <span class="third-section-degree">
@@ -113,82 +126,97 @@ function displayHourlyForecast(response) {
     </div>`
   }
 }
+//display hourly forecast end//
 
+//Daily forecast start//
+function getDailyDayForecast(response) {
+  apiKey = "ba753d969dccd2973e89444d00d45191";
+  let longitude = response.coords.longitude;
+  let latitude = response.coords.latitude;
+  apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`
+  axios.get(apiUrl).then(displayDailyForecast);
+}
 
-
-function displaydailyForecast(response) {
+function displayDailyForecast(response) {
   let dailyForecastElement = document.querySelector("#daily-forecast");
-  console.log(response.data);
   dailyForecastElement.innerHTML = null;
   let dailyForecast = null;
-  
+
   for (let index = 1; index < 4; index++) {
     let dailyForecast = response.data.list[index];
-    
     dailyForecastElement.innerHTML += `
     <div class="list-group-item list-group-item-action">
-      ${formatday (dailyForecast.dt * 1000)}
+      "${formatWeekDay (dailyForecast.dt * 1000)}"
       <span class="second-section-icon">
       <img src="${formatIcon(dailyForecast.weather[0].icon)}" width="60" />
         <span class="second-section-degree">
-          ${Math.round(dailyForecast.main.temp)}°
+          ${Math.round(dailyForecast.temp.day)}°
         </span>
       </span>
     </div>`
   }
-}
-  
-  
+} 
+//Daily forecast end//
+
+//search box start//
 function searchCity(results) {
   let apiKey = "ba753d969dccd2973e89444d00d45191";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${results}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
 
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${results}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayHourlyForecast);
+  let apiHourlyForecastUrlstring = `https://api.openweathermap.org/data/2.5/forecast?q=${results}&appid=${apiKey}&units=metric`;
+  axios.get(apiHourlyForecastUrlstring).then(displayHourlyForecast);
+ 
 }
 searchCity("Kathmandu");
 
-function submit(event) {
+function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#search-bar").value;
   searchCity(city);
 }
 
+let searchForm = document.querySelector("#search-bar");
+searchForm.addEventListener("submit", handleSubmit);
+
 let searchButton = document.querySelector("#on-click");
-searchButton.addEventListener("click", submit);
+searchButton.addEventListener("click", handleSubmit);
 
+//search box end//
 
-
+//Locate button start//
 function showLocation(position) {
   let apiKey = "ba753d969dccd2973e89444d00d45191";
   let longitude = position.coords.longitude;
   let latitude = position.coords.latitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
-  }
+
+  let apiHourlyForecastUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiHourlyForecastUrl).then(displayHourlyForecast);
+
+}
   
-function defaultAction(event) {
+function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showLocation);
 }
 
 let locateButton = document.querySelector("#locate");
-locateButton.addEventListener("click", defaultAction);
-let displayHourlyForecastOnLocate = document.querySelector("#hourly-forecast")
-displayHourlyForecastOnLocate.addEventListener("click", displayHourlyForecast);
+locateButton.addEventListener("click", getLocation);
 
+// Locate button end//
 
-function showFarenheit(event) {
+//show fahrenheit start//
+function showFahrenheit(event) {
   let switchF = document.querySelector("#temperature");
-  let farenheitFormula = (celsiusTemp * 9) / 5 + 32;
+  let fahrenheitFormula = (celsiusTemp * 9) / 5 + 32;
   if (event.target.checked) {
-    switchF.innerHTML = `${Math.round(farenheitFormula)}°F`;
+    switchF.innerHTML = `${Math.round(fahrenheitFormula)}°F`;
   } else {
     switchF.innerHTML = `${Math.round(celsiusTemp)}°C`;
   }
 }
-
 
 function hideCelsius() {
   let celsius = document.querySelector("#unit");
@@ -198,5 +226,7 @@ function hideCelsius() {
 let celsiusTemp = null;
 
 let switchButton = document.querySelector("#flexSwitchCheckDefault");
-switchButton.addEventListener("click", showFarenheit);
+switchButton.addEventListener("click", showFahrenheit);
 switchButton.addEventListener("click", hideCelsius);
+//show fahrenheit end//
+
