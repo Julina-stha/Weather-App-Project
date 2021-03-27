@@ -16,14 +16,8 @@ let currentDay = days[current.getDay()];
 let displayDay = document.querySelector("#day");
 displayDay.innerHTML = currentDay;
 
-let currentHour = current.getHours();
 
-let currentMin = current.getMinutes();
-if (currentMin < 10) {
-  currentMin = `0${currentMin}`;
-}
-let displayTime = document.querySelector("#time");
-displayTime.innerHTML = `${currentHour}:${currentMin}`;
+
 
 
 function formatHours(timestamp) {
@@ -48,6 +42,16 @@ function formatWeekday(timestamp) {
   return `${dailyWeekDays}`;
 }
 
+function formatLocalTime(timeZone, dateTime) {
+  let now = new Date();
+  if (dateTime !== null) {
+    now = new Date(dateTime * 1000);
+  }
+  let timeZoneOffsetInMs = now.getTimezoneOffset() * 60 * 1000;
+  let timeZoneInMs = timeZone * 1000;
+  let convertedTime = now.getTime() + timeZoneOffsetInMs + timeZoneInMs;
+  return convertedTime;
+}
 
 
 function formatIcon(icon) {
@@ -101,7 +105,14 @@ function displayWeatherInfo(outcome) {
   document.querySelector("#humidity").innerHTML = `Humidity: ${outcome.data.main.humidity}%`;
   document.querySelector("#wind").innerHTML = `Wind: ${Math.round(outcome.data.wind.speed)}km/h`;
   document.querySelector("#current-weather-icon").setAttribute("src", formatIcon(outcome.data.weather[0].icon));
+  let cityLatitude = outcome.data.coord.lat;
+  let cityLongitude = outcome.data.coord.lon;
+  getDailyForecast(cityLatitude, cityLongitude);
 
+  let localTimeStamp = formatLocalTime(outcome.data.timezone, null);
+  let timeAtLocation = formatHours(localTimeStamp);
+  locationDateTimeStamp = localTimeStamp;
+  document.querySelector("#local-time").innerHTML = timeAtLocation;
 }
 
 //display hourly forecast start//
@@ -129,16 +140,16 @@ function displayHourlyForecast(response) {
 //display hourly forecast end//
 
 //Daily forecast start//
-function getDailyDayForecast(response) {
-  apiKey = "ba753d969dccd2973e89444d00d45191";
-  let longitude = response.coords.longitude;
-  let latitude = response.coords.latitude;
-  apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`
+function getDailyForecast(cityLatitude, cityLongitude) {
+  let apiKey = "ba753d969dccd2973e89444d00d45191";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLatitude}&lon=${cityLongitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayDailyForecast);
+
 }
 
 function displayDailyForecast(response) {
   let dailyForecastElement = document.querySelector("#daily-forecast");
+  console.log(response.data);
   dailyForecastElement.innerHTML = null;
   let dailyForecast = null;
 
@@ -194,7 +205,6 @@ function showLocation(position) {
 
   let apiHourlyForecastUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiHourlyForecastUrl).then(displayHourlyForecast);
-
 }
   
 function getLocation(event) {
