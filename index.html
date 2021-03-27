@@ -20,7 +20,7 @@
     <div class="card">
       <div class="card-body">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" id="search-bar">
+          <input type="search" class="form-control" id="search-bar">
           <button type="button" class="btn btn-outline-info" id="on-click">Search</button>
           <button type="button" class="btn btn-outline-info" id="locate">🔎</button>
           <div class="switch">
@@ -50,16 +50,16 @@
                   <div class="card-text" id="weather-description">
                   </div>
                   <p class="today" id="day">
-                    Saturday
                   </p>
-                  <p class="card-text" id="humidity">
-                    Humidity:
+                  <p class="card-text">
+                    <span id="humidity"></span>
+                    <i class="fas fa-tint"></i>
                   </p>
-                  <p class="card-text" id="Wind">
-                    Wind:
+                  <p class="card-text">
+                    <span id="wind"></span>
+                    <i class="fas fa-wind"></i>
                   </p>
                   <div class="first-icon" id="current-weather-icon">
-                    <img src="https://img.icons8.com/doodle/96/000000/partly-cloudy-night.png" width="110" />
                   </div>
                 </div>
               </div>
@@ -71,7 +71,7 @@
                 15:00
                 <span class="second-section-icon">
                   <img src="https://img.icons8.com/doodle/96/000000/bright-moon.png" width="42" />
-                  <span class="third-section-degree">
+                  <span class="third-section-degree" id="temperature">
                     14°
                   </span>
                 </span>
@@ -80,7 +80,7 @@
                 16:00
                 <span class="second-section-icon">
                   <img src="https://img.icons8.com/doodle/96/000000/bright-moon.png" width="42" />
-                  <span class="third-section-degree">
+                  <span class="third-section-degree" id="temperature">
                     16°
                   </span>
                 </span>
@@ -89,7 +89,7 @@
                 17:00
                 <span class="second-section-icon">
                   <img src="https://img.icons8.com/doodle/96/000000/partly-cloudy-night.png" width="42" />
-                  <span class="third-section-degree">
+                  <span class="third-section-degree" id="temperature">
                     13°
                   </span>
                 </span>
@@ -98,7 +98,7 @@
                 18:00
                 <span class="second-section-icon">
                   <img src="https://img.icons8.com/doodle/96/000000/bright-moon.png" width="42" />
-                  <span class="third-section-degree">
+                  <span class="third-section-degree" id="temperature">
                     12°
                   </span>
                 </span>
@@ -112,7 +112,7 @@
                   Sun
                   <span class="second-section-icon">
                     <img src="https://img.icons8.com/doodle/96/000000/partly-cloudy-day.png" width="60" />
-                    <span class="second-section-degree">
+                    <span class="second-section-degree" id="temperature">
                     16°
                     </span>
                   </span>
@@ -121,7 +121,7 @@
                   Mon
                   <span class="second-section-icon">
                     <img src="https://img.icons8.com/doodle/192/000000/sun--v1.png" width="60" />
-                    <span class="second-section-degree">
+                    <span class="second-section-degree" id="temperature">
                       16°
                     </span>
                   </span>
@@ -130,7 +130,7 @@
                   Tue
                   <span class="second-section-icon">
                     <img src="https://img.icons8.com/doodle/96/000000/snow--v1.png" width="60" />
-                    <span class="second-section-degree">
+                    <span class="second-section-degree" id="temperature">
                       16°
                     </span>
                   </span>
@@ -139,7 +139,7 @@
                   Wed
                   <span class="second-section-icon">
                     <img src="https://img.icons8.com/doodle/96/000000/rain--v1.png" width="60" />
-                    <span class="second-section-degree">
+                    <span class="second-section-degree" id="temperature">
                       16°
                     </span>
                   </span>
