@@ -84,7 +84,7 @@ body {
 }
 
 .col-6 {
-  width: 57%;
+  width: 62%;
   margin-left: 20px;
 }
 
@@ -92,9 +92,6 @@ body {
   display: block;
   text-align: left;
   color: #0fbbdd;
-}
-#first-card-body {
-  padding: 5px 15px 10px 15px;
 }
 
 .card-2 {
@@ -190,8 +187,7 @@ body {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-.list-group-item,
-.list-group-item-action {
+.list-group-item {
   text-align: center;
 }
 .second-section-degree {
@@ -208,6 +204,7 @@ body {
 
 .third-section {
   width: 0%;
+  padding: 0%;
 }
 
 .third-section-degree {
@@ -229,11 +226,12 @@ body {
 }
 
 .list-group-item-2:hover {
+  width: fit-content;
   color: #0dcaf0;
   background-color: #ffc4113d;
-  -ms-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .small-text {

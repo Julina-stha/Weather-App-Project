@@ -105,22 +105,14 @@ function formatIcon(icon) {
 }
 function displayWeatherInfo(outcome) {
   console.log(outcome);
-  document.querySelector("#city-name").innerHTML = outcome.data.name;
+  document.querySelector("#city-name").innerHTML = outcome.data.name + "," + outcome.data.sys.country;
   celsiusTemp = outcome.data.main.temp;
-  document.querySelector("#temperature").innerHTML = `${Math.round(
-    celsiusTemp
-  )}`;
-  document.querySelector("#weather-description").innerHTML =
-    outcome.data.weather[0].description;
-  document.querySelector(
-    "#humidity"
-  ).innerHTML = `Humidity: ${outcome.data.main.humidity}%`;
-  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
-    outcome.data.wind.speed
-  )}km/h`;
-  document
-    .querySelector("#current-weather-icon")
-    .setAttribute("src", formatIcon(outcome.data.weather[0].icon));
+  document.querySelector("#temperature").innerHTML = `${Math.round(celsiusTemp)}`;
+  document.querySelector("#weather-description").innerHTML = outcome.data.weather[0].description;
+  document.querySelector("#humidity").innerHTML = `Humidity: ${outcome.data.main.humidity}%`;
+  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(outcome.data.wind.speed)}km/h`;
+  document.querySelector("#current-weather-icon").setAttribute("src", formatIcon(outcome.data.weather[0].icon));
+
   let cityLatitude = outcome.data.coord.lat;
   let cityLongitude = outcome.data.coord.lon;
   getDailyForecast(cityLatitude, cityLongitude);
@@ -141,7 +133,7 @@ function displayHourlyForecast(response) {
     hourlyForecastElement.innerHTML += `
     <div class="list-group-item-2 list-group-item-action">
       ${formatHours(localTimestamp * 1000)}
-      <span class="second-section-icon">
+      <span class="third-section-icon">
       <img src="${formatIcon(hourlyForecast.weather[0].icon)}" width="48"/>
         <span class="third-section-degree">
           ${Math.round(hourlyForecast.main.temp)}</span><span class="third-degree">°</span>
@@ -181,6 +173,7 @@ function searchCity(results) {
   let apiKey = "ba753d969dccd2973e89444d00d45191";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${results}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
+  
   let apiHourlyForecastUrlstring = `https://api.openweathermap.org/data/2.5/forecast?q=${results}&appid=${apiKey}&units=metric`;
   axios.get(apiHourlyForecastUrlstring).then(displayHourlyForecast);
 }
@@ -207,6 +200,7 @@ function showLocation(position) {
   let apiHourlyForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiHourlyForecastUrl).then(displayHourlyForecast);
 }
+
 function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showLocation);
@@ -261,3 +255,22 @@ let switchButton = document.querySelector("#flexSwitchCheckDefault");
 switchButton.addEventListener("click", showFahrenheit);
 switchButton.addEventListener("click", hideCelsius);
 //show fahrenheit end//
+
+//set background start//
+
+function formatBackgroundImage(image) {
+  let backgroundElement = null;
+  if (image >= 03) {
+    backgroundElement = "source/images/Spring.png";
+  } else if (image >= 06) {
+    backgroundElement = "source/images/Summer.png";
+  } else if (image >= 09) {
+    backgroundElement = "source/images/Autumn.png";
+  } else if (image === 12 && image < 03) {
+    backgroundElement = "source/images/Winter.png";
+  }
+  return backgroundElement;
+}
+
+document.querySelector("#weather-background").setAttribute("src", formatBackgroundImage());
+//set background end//
