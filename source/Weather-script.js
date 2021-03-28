@@ -270,7 +270,7 @@ switchButton.addEventListener("click", hideCelsius);
 //show fahrenheit end//
 
 //set background start//
-let formatMonth = 12;
+let formatMonth = currentMonth;
 if (formatMonth >= 3 && formatMonth <= 5) {
   document.body.style.backgroundImage = "url(source/images/Spring.png)";
   document.body.style.backgroundRepeat = "no-repeat";
