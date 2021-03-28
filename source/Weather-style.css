@@ -135,20 +135,20 @@ body {
 }
 
 #weather-description {
-  float: right;
-  text-align-last: right;
-  font-size: 16px;
-  word-wrap: break-word;
-  margin-top: 1%;
+  position: absolute;
+  width: 16%;
+  overflow-wrap: break-word;
+  text-align: right;
+  margin-left: 150px;
+  margin-top: -5px;
   color: black;
 }
 .first-icon {
-  display: block;
-  size: 100%;
+  position: fixed;
   margin-top: -170px;
-  float: right;
+  margin-left: 140px;
+  max-width: 90px;
   color: #ffca2c;
-  visibility: visible;
 }
 
 .first-icon:hover {
@@ -181,7 +181,6 @@ body {
   background-color: transparent;
   border-color: transparent;
   line-height: 1.4;
-  padding: 10px 10px 10px 10px;
 }
 
 .list-group-item:hover {
@@ -191,10 +190,19 @@ body {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
+.list-group-item,
+.list-group-item-action {
+  text-align: center;
+}
 .second-section-degree {
   font-size: 15px;
   font-family: monospace;
+  color: #c06e30fb;
+}
+.second-degree {
+  position: absolute;
+  top: 90px;
+  left: 62px;
   color: #c06e30fb;
 }
 
@@ -205,6 +213,11 @@ body {
 .third-section-degree {
   font-size: 13px;
   font-family: monospace;
+}
+
+.third-degree {
+  display: inline-block;
+  margin-left: 1px;
 }
 
 .list-group-item-2 {
@@ -218,9 +231,9 @@ body {
 .list-group-item-2:hover {
   color: #0dcaf0;
   background-color: #ffc4113d;
-  -ms-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .small-text {
