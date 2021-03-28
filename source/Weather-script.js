@@ -178,6 +178,7 @@ function searchCity(results) {
   axios.get(apiHourlyForecastUrlstring).then(displayHourlyForecast);
 }
 searchCity("Kathmandu");
+
 function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#search-bar").value;
@@ -208,6 +209,7 @@ function getLocation(event) {
 let locateButton = document.querySelector("#locate");
 locateButton.addEventListener("click", getLocation);
 // Locate button end//
+
 //show fahrenheit start//
 function showFahrenheit(event) {
   let switchF = document.querySelector("#temperature");
@@ -257,20 +259,26 @@ switchButton.addEventListener("click", hideCelsius);
 //show fahrenheit end//
 
 //set background start//
+let formatMonth = 6;
+if (formatMonth >= 3 && formatMonth <= 5) {
+  document.body.style.backgroundImage = "url(source/images/Spring.png)";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 
-function formatBackgroundImage(image) {
-  let backgroundElement = null;
-  if (image >= 03) {
-    backgroundElement = "source/images/Spring.png";
-  } else if (image >= 06) {
-    backgroundElement = "source/images/Summer.png";
-  } else if (image >= 09) {
-    backgroundElement = "source/images/Autumn.png";
-  } else if (image === 12 && image < 03) {
-    backgroundElement = "source/images/Winter.png";
-  }
-  return backgroundElement;
+} else if (formatMonth >= 6 && formatMonth <= 8) {
+  document.body.style.backgroundImage = "url(source/images/Summer.png)";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
+
+
+} else if (formatMonth >= 9 && formatMonth <= 11) {
+  document.body.style.backgroundImage = "url(source/images/Autumn.png)";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
+
+} else if (formatMonth == 12 || formatMonth == 1 || formatMonth == 2) {
+  document.body.style.backgroundImage = "url(source/images/Winter.png)";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
 }
-
-document.querySelector("#weather-background").setAttribute("src", formatBackgroundImage(currentMonth));
 //set background end//
