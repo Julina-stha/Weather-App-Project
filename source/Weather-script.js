@@ -272,5 +272,5 @@ function formatBackgroundImage(image) {
   return backgroundElement;
 }
 
-document.querySelector("#weather-background").setAttribute("src", formatBackgroundImage());
+document.querySelector("#weather-background").setAttribute("src", formatBackgroundImage(currentMonth));
 //set background end//
