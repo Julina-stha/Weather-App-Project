@@ -62,6 +62,9 @@ function formatLocalTime(timeZone, dateTime) {
   let convertedTime = now.getTime() + timeZoneOffsetInMs + timeZoneInMs;
   return convertedTime;
 }
+//Setting time and date end//
+
+//formatting icon start//
 function formatIcon(icon) {
   let iconElement = null;
   if (icon === "01d") {
@@ -103,6 +106,9 @@ function formatIcon(icon) {
   }
   return iconElement;
 }
+//formatting icon end//
+
+//display main weather info start//
 function displayWeatherInfo(outcome) {
   console.log(outcome);
   document.querySelector("#city-name").innerHTML = outcome.data.name + "," + outcome.data.sys.country;
@@ -121,6 +127,8 @@ function displayWeatherInfo(outcome) {
   locationDateTimeStamp = localTimeStamp;
   document.querySelector("#local-time").innerHTML = timeAtLocation;
 }
+//display main weather info end//
+
 //display hourly forecast start//
 function displayHourlyForecast(response) {
   let hourlyForecastElement = document.querySelector("#hourly-forecast");
@@ -142,7 +150,8 @@ function displayHourlyForecast(response) {
   }
 }
 //display hourly forecast end//
-//Daily forecast start//
+
+//display Daily forecast start//
 function getDailyForecast(cityLatitude, cityLongitude) {
   let apiKey = "ba753d969dccd2973e89444d00d45191";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLatitude}&lon=${cityLongitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
@@ -167,7 +176,8 @@ function displayDailyForecast(response) {
     </div>`;
   }
 }
-//Daily forecast end//
+//display Daily forecast end//
+
 //search box start//
 function searchCity(results) {
   let apiKey = "ba753d969dccd2973e89444d00d45191";
@@ -206,6 +216,7 @@ function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showLocation);
 }
+
 let locateButton = document.querySelector("#locate");
 locateButton.addEventListener("click", getLocation);
 // Locate button end//
@@ -259,7 +270,7 @@ switchButton.addEventListener("click", hideCelsius);
 //show fahrenheit end//
 
 //set background start//
-let formatMonth = 6;
+let formatMonth = currentMonth;
 if (formatMonth >= 3 && formatMonth <= 5) {
   document.body.style.backgroundImage = "url(source/images/Spring.png)";
   document.body.style.backgroundRepeat = "no-repeat";
