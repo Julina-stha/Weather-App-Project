@@ -107,21 +107,28 @@ function displayWeatherInfo(outcome) {
   console.log(outcome);
   document.querySelector("#city-name").innerHTML = outcome.data.name;
   celsiusTemp = outcome.data.main.temp;
-  document.querySelector("#temperature").innerHTML = `${Math.round(celsiusTemp)}`;
-  document.querySelector("#weather-description").innerHTML = outcome.data.weather[0].description;
-  document.querySelector("#humidity").innerHTML = `Humidity: ${outcome.data.main.humidity}%`;
-  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(outcome.data.wind.speed)}km/h`;
-  document.querySelector("#current-weather-icon").setAttribute("src", formatIcon(outcome.data.weather[0].icon));
+  document.querySelector("#temperature").innerHTML = `${Math.round(
+    celsiusTemp
+  )}`;
+  document.querySelector("#weather-description").innerHTML =
+    outcome.data.weather[0].description;
+  document.querySelector(
+    "#humidity"
+  ).innerHTML = `Humidity: ${outcome.data.main.humidity}%`;
+  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
+    outcome.data.wind.speed
+  )}km/h`;
+  document
+    .querySelector("#current-weather-icon")
+    .setAttribute("src", formatIcon(outcome.data.weather[0].icon));
   let cityLatitude = outcome.data.coord.lat;
   let cityLongitude = outcome.data.coord.lon;
   getDailyForecast(cityLatitude, cityLongitude);
-
   let localTimeStamp = formatLocalTime(outcome.data.timezone, null);
   let timeAtLocation = formatHours(localTimeStamp);
   locationDateTimeStamp = localTimeStamp;
   document.querySelector("#local-time").innerHTML = timeAtLocation;
 }
-
 //display hourly forecast start//
 function displayHourlyForecast(response) {
   let hourlyForecastElement = document.querySelector("#hourly-forecast");
@@ -137,8 +144,7 @@ function displayHourlyForecast(response) {
       <span class="second-section-icon">
       <img src="${formatIcon(hourlyForecast.weather[0].icon)}" width="48"/>
         <span class="third-section-degree">
-          ${Math.round(hourlyForecast.main.temp)}
-        </span>°
+          ${Math.round(hourlyForecast.main.temp)}</span><span class="third-degree">°</span>
       </span>
     </div>`;
   }
@@ -155,22 +161,21 @@ function displayDailyForecast(response) {
   console.log(response.data);
   dailyForecastElement.innerHTML = null;
   let dailyForecast = null;
-  for (let index = 0; index < 4; index++) {
+  for (let index = 1; index < 5; index++) {
     let dailyForecast = response.data.daily[index];
     dailyForecastElement.innerHTML += `
     <div class="list-group-item list-group-item-action">
-      "${formatWeekDay(dailyForecast.dt * 1000)}"
-      <span class="second-section-icon">
-      <img src="${formatIcon(dailyForecast.weather[0].icon)}" width="60" />
-      <div class="second-section-degree">
-        ${Math.round(dailyForecast.temp.day)}°
-      </div>°
-      </span>
+      ${formatWeekDay(dailyForecast.dt * 1000)}
+      <div class="second-section-icon">
+        <img src="${formatIcon(dailyForecast.weather[0].icon)}" width="60" />
+        <div class="second-section-degree">
+          ${Math.round(dailyForecast.temp.day)}
+        </div><span class="second-degree">°</span>
+      </div>
     </div>`;
   }
 }
 //Daily forecast end//
-
 //search box start//
 function searchCity(results) {
   let apiKey = "ba753d969dccd2973e89444d00d45191";
@@ -199,7 +204,7 @@ function showLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
 
-  let apiHourlyForecastUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let apiHourlyForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiHourlyForecastUrl).then(displayHourlyForecast);
 }
 function getLocation(event) {
@@ -209,7 +214,6 @@ function getLocation(event) {
 let locateButton = document.querySelector("#locate");
 locateButton.addEventListener("click", getLocation);
 // Locate button end//
-
 //show fahrenheit start//
 function showFahrenheit(event) {
   let switchF = document.querySelector("#temperature");
