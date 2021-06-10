@@ -279,7 +279,6 @@ if (formatMonth >= 3 && formatMonth <= 5) {
 } else if (formatMonth >= 6 && formatMonth <= 8) {
   document.body.style.backgroundImage = "url(source/images/Summer.png)";
   document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
 
 
 } else if (formatMonth >= 9 && formatMonth <= 11) {
