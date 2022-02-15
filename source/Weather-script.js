@@ -167,12 +167,10 @@ function displayDailyForecast(response) {
     dailyForecastElement.innerHTML += `
     <div class="list-group-item list-group-item-action">
       ${formatWeekDay(dailyForecast.dt * 1000)}
-      <div class="second-section-icon">
-        <img src="${formatIcon(dailyForecast.weather[0].icon)}" width="60" />
+        <img src="${formatIcon(dailyForecast.weather[0].icon)}" class="second-section-icon"/>
         <div class="second-section-degree">
           ${Math.round(dailyForecast.temp.day)}
         </div><span class="second-degree">°</span>
-      </div>
     </div>`;
   }
 }
@@ -272,7 +270,7 @@ switchButton.addEventListener("click", hideCelsius);
 //set background start//
 let formatMonth = currentMonth;
 if (formatMonth >= 3 && formatMonth <= 5) {
-  document.body.style.backgroundImage = "url(source/images/Spring.png)";
+  document.style.backgroundImage = "url(source/images/Spring.png)";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "cover";
 
@@ -290,5 +288,6 @@ if (formatMonth >= 3 && formatMonth <= 5) {
   document.body.style.backgroundImage = "url(source/images/Winter.png)";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "cover";
+
 }
 //set background end//
