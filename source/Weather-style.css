@@ -20,6 +20,7 @@
   max-width: 500px;
   font-family: monospace;
   background-color: transparent;
+  top: 4rem;
 }
 
 .card-body {
@@ -88,11 +89,13 @@
   display: block;
   text-align: left;
   color: #0fbbdd;
+  width: 65%;
 }
 
 .card-2 {
   border-radius: 10px;
-  margin-left: -2%;
+  margin-left: 5%;
+  margin-top: 1rem;
 }
 .card-2:hover {
   background-color: #ffc4113d;
@@ -171,7 +174,9 @@
 }
 
 .list-group-2 {
-  width: 11rem;
+  width: 10rem;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
 }
 
 .list-group-item-2 {
@@ -186,9 +191,9 @@
   width: fit-content;
   color: #0dcaf0;
   background-color: #ffc4113d;
-  -ms-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .second-section {
@@ -256,6 +261,10 @@ a {
     display: block;
     margin: 0 auto;
     padding: 40px 50px 0px 50px;
+  }
+
+  .card {
+    border-color: #c06e30fb;
   }
 
   .card-body {
@@ -339,8 +348,14 @@ a {
   }
 
   .card-2 {
-    border-radius: 7px;
+    border-radius: 6px;
     margin-left: 0%;
+    background-color: #ffc4113d;
+    margin-top: 0%;
+  }
+
+  .first-section {
+    width: 100%;
   }
   #first-card-body {
     padding: 5px 0px 10px 20px;
@@ -369,14 +384,16 @@ a {
   }
 
   .third-section {
-    margin-left: 1px;
-    margin-top: 5%;
+    margin-top: -0.5rem;
+    margin-left: 8rem;
   }
 
   .list-group-2 {
-    margin-left: 5%;
-    border-radius: 5px;
+    border-radius: 6px;
     width: 8rem;
+    float: right;
+
+    background-color: #ffc4113d;
   }
 
   .list-group-item-2 {
@@ -393,12 +410,16 @@ a {
     font-size: 12px;
   }
 
+  .second-section {
+    padding-left: 7rem;
+  }
+
   .list-group {
-    position: absolute;
-    top: 15.5rem;
-    left: 10rem;
     flex-direction: column;
-    width: 40%;
+    width: 100%;
+    margin-top: -13rem;
+    margin-left: 1rem;
+    background-color: #ffc4113d;
   }
 
   .list-group-item {
@@ -427,17 +448,14 @@ a {
     margin-right: 4%;
   }
   .second-degree {
-    top: 12px;
-    left: 109px;
+    top: 13px;
+    left: 117px;
   }
 
   .small-text {
-    display: block;
+    position: absolute;
     font-size: 10px;
-    margin: 0%;
-    padding: 10px 30px 0px 30px;
-  }
-
-  .small-text2 {
+    bottom: 17rem;
+    left: -3.5rem;
   }
 }
