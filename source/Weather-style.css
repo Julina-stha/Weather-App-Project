@@ -262,10 +262,6 @@ a {
     margin: 0 auto;
   }
 
-  .card {
-    border-color: #c06e30fb;
-  }
-
   .card-body {
     padding: 1rem 1rem 0.2rem 1rem;
     margin-bottom: 0%;
@@ -349,7 +345,7 @@ a {
   .card-2 {
     border-radius: 6px;
     margin-left: 0%;
-    background-color: #ffc4113d;
+    background-color: #7ee9ff33;
     margin-top: 0%;
   }
 
@@ -393,7 +389,7 @@ a {
     border-radius: 6px;
     width: 10.5rem;
     float: right;
-    background-color: #ffc4113d;
+    background-color: #7ee9ff33;
   }
 
   .list-group-item-2 {
@@ -419,7 +415,7 @@ a {
     width: 100%;
     margin-top: -13rem;
     margin-left: 1rem;
-    background-color: #ffc4113d;
+    background-color: #7ee9ff33;
   }
 
   .list-group-item {
