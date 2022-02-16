@@ -269,6 +269,7 @@ switchButton.addEventListener("click", hideCelsius);
 
 //set background start//
 let formatMonth = currentMonth;
+
 if (formatMonth >= 3 && formatMonth <= 5) {
   document.style.backgroundImage = "url(source/images/Spring.png)";
   document.body.style.backgroundRepeat = "no-repeat";
@@ -287,7 +288,9 @@ if (formatMonth >= 3 && formatMonth <= 5) {
 } else if (formatMonth == 12 || formatMonth == 1 || formatMonth == 2) {
   document.body.style.backgroundImage = "url(source/images/Winter.png)";
   document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundSize = "auto";
 
 }
+
+
 //set background end//
