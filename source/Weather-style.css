@@ -245,7 +245,9 @@
 
 .small-text {
   font-family: monospace;
+  position: relative;
   margin-left: 39%;
+  bottom: -5rem;
 }
 
 .small-text2 {
@@ -349,6 +351,10 @@ a {
     margin-top: 0%;
   }
 
+  .card-2:hover {
+    background-color: #7ee9ff33;
+  }
+
   .first-section {
     width: 100%;
   }
@@ -398,6 +404,7 @@ a {
   }
 
   .list-group-item-2:hover {
+    background-color: transparent;
     -ms-transform: none;
     -webkit-transform: none;
     transform: none;
@@ -424,6 +431,8 @@ a {
   }
 
   .list-group-item:hover {
+    background-color: transparent;
+
     -ms-transform: none;
     -webkit-transform: none;
     transform: none;
@@ -466,8 +475,15 @@ a {
   }
 
   .third-section {
+    position: relative;
     padding-left: 40px;
-    width: 50%;
+    left: -0.5rem;
+  }
+
+  .list-group-2 {
+    width: 9rem;
+    left: -17px;
+    position: relative;
   }
 
   .second-section {
@@ -475,7 +491,17 @@ a {
     margin: 0%;
   }
 
-  .second-section .list-group-item {
-    padding-right: 4rem;
+  .list-group {
+    width: 90%;
+    margin-left: 2rem;
+  }
+
+  .second-degree {
+    top: 0.8rem;
+    left: 6.5rem;
+  }
+
+  .small-text {
+    bottom: 5rem;
   }
 }
