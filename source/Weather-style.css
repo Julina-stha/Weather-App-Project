@@ -197,7 +197,7 @@
 }
 
 .second-section {
-  display: block;
+  position: relative;
   margin: 0 auto;
   margin-right: 50%;
 }
@@ -502,6 +502,6 @@ a {
   }
 
   .small-text {
-    bottom: 4rem;
+    bottom: -3rem;
   }
 }
