@@ -460,7 +460,7 @@ a {
   .small-text {
     position: absolute;
     font-size: 10px;
-    bottom: 0rem;
+    bottom: 3rem;
     left: -3.5rem;
   }
 }
@@ -499,9 +499,5 @@ a {
   .second-degree {
     top: 0.8rem;
     left: 6.5rem;
-  }
-
-  .small-text {
-    bottom: -3rem;
   }
 }
