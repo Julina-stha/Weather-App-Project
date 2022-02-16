@@ -460,7 +460,7 @@ a {
   .small-text {
     position: absolute;
     font-size: 10px;
-    bottom: 17rem;
+    bottom: 0rem;
     left: -3.5rem;
   }
 }
