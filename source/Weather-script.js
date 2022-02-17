@@ -289,6 +289,8 @@ if (formatMonth >= 3 && formatMonth <= 5) {
   document.body.style.backgroundImage = "url(source/images/Winter.png)";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "auto";
+  document.body.style.backgroundPosition = "bottom";
+
 
 }
 
