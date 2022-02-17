@@ -271,7 +271,7 @@ switchButton.addEventListener("click", hideCelsius);
 let formatMonth = currentMonth;
 
 if (formatMonth >= 3 && formatMonth <= 5) {
-  document.style.backgroundImage = "url(source/images/Spring.png)";
+  document.body.style.backgroundImage = "url(source/images/Spring.png)";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "cover";
 
@@ -288,11 +288,35 @@ if (formatMonth >= 3 && formatMonth <= 5) {
 } else if (formatMonth == 12 || formatMonth == 1 || formatMonth == 2) {
   document.body.style.backgroundImage = "url(source/images/Winter.png)";
   document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "contain";
-  document.body.style.backgroundPosition = "right 96% bottom 20px";
-  document.body.style.backgroundAttachment = "fixed";
+  document.body.style.backgroundSize = "cover";
 
 }
+
+var bg = window.matchMedia("(max-width:414px)");
+function changeBg(bg) {
+  if ((bg.matches) && (formatMonth >= 3 && formatMonth <= 5)) {
+    document.body.style.backgroundImage = "url(source/images/Spring-414px.png)";
+    document.body.style.backgroundRepeat = "no-repeat";
+
+
+  } else if ((bg.matches) && (formatMonth >= 6 && formatMonth <= 8)) {
+    document.body.style.backgroundImage = "url(source/images/Summer-414px.png)";
+    document.body.style.backgroundRepeat = "no-repeat";
+
+
+  } else if ((bg.matches) && (formatMonth >= 9 && formatMonth <= 11)) {
+    document.body.style.backgroundImage = "url(source/images/Autumn-414px.png)";
+    document.body.style.backgroundRepeat = "no-repeat";
+
+
+  } else if ((bg.matches) && (formatMonth == 12 || formatMonth == 1 || formatMonth == 2)) {
+    document.body.style.backgroundImage = "url(source/images/Winter-414px.png)";
+    document.body.style.backgroundRepeat = "no-repeat";
+
+
+  }
+}
+bg.addEventListener('change', changeBg);
 
 
 //set background end//
