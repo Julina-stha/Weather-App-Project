@@ -288,7 +288,7 @@ if (formatMonth >= 3 && formatMonth <= 5) {
 } else if (formatMonth == 12 || formatMonth == 1 || formatMonth == 2) {
   document.body.style.backgroundImage = "url(source/images/Winter.png)";
   document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundSize = "auto";
 
 }
 
