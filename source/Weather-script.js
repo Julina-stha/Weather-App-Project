@@ -141,10 +141,10 @@ function displayHourlyForecast(response) {
     hourlyForecastElement.innerHTML += `
     <div class="list-group-item-2 list-group-item-action">
       ${formatHours(localTimestamp * 1000)}
-      <span class="third-section-icon">
+      <span class="second-section-icon">
       <img src="${formatIcon(hourlyForecast.weather[0].icon)}" width="48"/>
-        <span class="third-section-degree">
-          ${Math.round(hourlyForecast.main.temp)}</span><span class="third-degree">°</span>
+        <span class="second-section-degree">
+          ${Math.round(hourlyForecast.main.temp)}</span><span class="second-degree">°</span>
       </span>
     </div>`;
   }
@@ -167,10 +167,10 @@ function displayDailyForecast(response) {
     dailyForecastElement.innerHTML += `
     <div class="list-group-item list-group-item-action">
       ${formatWeekDay(dailyForecast.dt * 1000)}
-        <img src="${formatIcon(dailyForecast.weather[0].icon)}" class="second-section-icon"/>
-        <div class="second-section-degree">
+        <img src="${formatIcon(dailyForecast.weather[0].icon)}" class="third-section-icon"/>
+        <div class="third-section-degree">
           ${Math.round(dailyForecast.temp.day)}
-        </div><span class="second-degree">°</span>
+        </div><span class="third-degree">°</span>
     </div>`;
   }
 }
@@ -225,14 +225,14 @@ function showFahrenheit(event) {
   let fahrenheitFormula = (celsiusTemp * 9) / 5 + 32;
   if (event.target.checked) {
     switchF.innerHTML = `${Math.round(fahrenheitFormula)}°F`;
-    let dailyForecast = document.querySelectorAll(".second-section-degree");
+    let dailyForecast = document.querySelectorAll(".third-section-degree");
     dailyForecast.forEach(function (item) {
       // grabbing the current value to convert
       let currentTemp = item.innerHTML;
       // convert to Fahrenheit
       item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
     });
-    let hourlyForecast = document.querySelectorAll(".third-section-degree");
+    let hourlyForecast = document.querySelectorAll(".second-section-degree");
     hourlyForecast.forEach(function (item) {
       // grabbing the current value to convert
       let currentTemp = item.innerHTML;
@@ -241,14 +241,14 @@ function showFahrenheit(event) {
     });
   } else {
     switchF.innerHTML = `${Math.round(celsiusTemp)}°C`;
-    let dailyForecast = document.querySelectorAll(".second-section-degree");
+    let dailyForecast = document.querySelectorAll(".third-section-degree");
     dailyForecast.forEach(function (item) {
       // grabbing the current value to convert
       let currentTemp = item.innerHTML;
       // convert to Celsius
       item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
     });
-    let hourlyForecast = document.querySelectorAll(".third-section-degree");
+    let hourlyForecast = document.querySelectorAll(".second-section-degree");
     hourlyForecast.forEach(function (item) {
       // grabbing the current value to convert
       let currentTemp = item.innerHTML;
@@ -289,12 +289,11 @@ if (formatMonth >= 3 && formatMonth <= 5) {
   document.body.style.backgroundImage = "url(source/images/Winter.png)";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "auto";
-  document.body.style.backgroundPosition = "bottom";
 
 
 }
 
-var bg = window.matchMedia("(max-width:414px)");
+var bg414 = window.matchMedia("(max-width:414px)");
 function changeBg(bg) {
   if ((bg.matches) && (formatMonth >= 3 && formatMonth <= 5)) {
     document.body.style.backgroundImage = "url(source/images/Spring-414px.png)";
@@ -314,6 +313,8 @@ function changeBg(bg) {
   } else if ((bg.matches) && (formatMonth == 12 || formatMonth == 1 || formatMonth == 2)) {
     document.body.style.backgroundImage = "url(source/images/Winter-414px.png)";
     document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundPositionY = "bottom";
+
 
 
   }
