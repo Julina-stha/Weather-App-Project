@@ -8,6 +8,7 @@ body {
 }
 .card {
   padding: 20px;
+  background-color: transparent;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
