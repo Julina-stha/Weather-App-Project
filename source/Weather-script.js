@@ -289,6 +289,8 @@ if (formatMonth >= 3 && formatMonth <= 5) {
   document.body.style.backgroundImage = "url(source/images/Winter.png)";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "auto";
+  document.body.style.backgroundPosition = "bottom";
+
 
 
 }
@@ -313,7 +315,7 @@ function changeBg(bg) {
   } else if ((bg.matches) && (formatMonth == 12 || formatMonth == 1 || formatMonth == 2)) {
     document.body.style.backgroundImage = "url(source/images/Winter-414px.png)";
     document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPositionY = "bottom";
+    document.body.style.backgroundPosition = "bottom";
 
 
 
