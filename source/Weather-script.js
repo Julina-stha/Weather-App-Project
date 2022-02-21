@@ -315,7 +315,7 @@ function changeBg(bg) {
   } else if ((bg.matches) && (formatMonth == 12 || formatMonth == 1 || formatMonth == 2)) {
     document.body.style.backgroundImage = "url(source/images/Winter-414px.png)";
     document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundPosition = "bottom";
+    document.body.style.backgroundPosition = "bottom -1% right 100%";
 
 
 
