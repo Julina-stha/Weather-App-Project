@@ -295,7 +295,7 @@ if (formatMonth >= 3 && formatMonth <= 5) {
 
 }
 
-var bg414 = window.matchMedia("(max-width:414px)");
+var bg414 = window.matchMedia("(min-width:414px)");
 function changeBg(bg) {
   if ((bg.matches) && (formatMonth >= 3 && formatMonth <= 5)) {
     document.body.style.backgroundImage = "url(source/images/Spring-414px.png)";
