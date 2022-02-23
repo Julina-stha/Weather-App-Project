@@ -141,6 +141,7 @@ p {
 }
 
 .first-icon {
+  width: 37%;
   margin-top: -9rem;
   float: right;
   margin-right: 1rem;
@@ -148,10 +149,12 @@ p {
 
 #weather-description {
   float: right;
+  width: 30%;
   color: black;
+  word-wrap: break-word;
   text-align: center;
-  margin-right: 2rem;
-  margin-top: 0.6rem;
+  margin-right: 1rem;
+  margin-top: 0rem;
 }
 
 .second-section {
